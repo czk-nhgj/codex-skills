@@ -1,0 +1,10 @@
+# 禁止提交真实凭据（填了 app_secret 的 config.json）
+skills/feishu-api/config.json
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 系统文件
+Thumbs.db
+.DS_Store
