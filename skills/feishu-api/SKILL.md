@@ -9,9 +9,9 @@ description: 通过飞书开放平台 API 查询和操作用户公司飞书数�
 
 ## 凭据
 
-- 位置：`config.json`（与 `SKILL.md` 同目录），包含 `app_id`、`app_secret`、`base_url`。
-- 首次使用：把同目录 `config.example.json` 复制为 `config.json`，填入公司飞书自建应用的 `app_id` / `app_secret`（向管理员索取，勿走公开渠道传输）。
-- `app_secret` 是敏感凭据：不要打印、不要写入日志或交付文件，也不要将 `config.json` 提交到 Git 或公开仓库。
+- `config.json.enc`：团队飞书应用凭据的加密文件（AES-256-GCM + scrypt），仓库中不含明文密钥。
+- 首次使用：在技能目录运行 `python unlock.py`，输入团队密码，即生成本地 `config.json`（已被 `.gitignore` 忽略，不会提交），之后可直接使用。
+- 团队密码不随仓库分发，请向管理员（GitHub: czk-nhgj）通过公司安全渠道索取；如怀疑泄露，请管理员到[飞书开发者后台](https://open.feishu.cn/app)重置 App Secret 并重新加密。
 
 ## 使用方式
 

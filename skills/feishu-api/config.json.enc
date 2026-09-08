@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "kdf": "scrypt",
+  "kdf_params": {
+    "n": 32768,
+    "r": 8,
+    "p": 1
+  },
+  "salt": "g2d9a16M6Cke+OqDfRyBRQ==",
+  "nonce": "IVoNWuJeT+wil/74",
+  "ciphertext": "5xODGAfp9WQhEv3poGrczjhxVVNlRUwICmopfzjZG3FsiGLBwrV2tgqGFckCA2LS4wM01dGuhuRFp4knCrRL/Dm143s7wr5H5YgfYdrhzHdiSVKtSuxERAU99b5PRuVcGIzIEuRu/37feK4tlDmbFC/NOGBZsrLRXXZQdkFD79oWT9t3kHZrOxP4DNPBY1ZpfqdZDw=="
+}
