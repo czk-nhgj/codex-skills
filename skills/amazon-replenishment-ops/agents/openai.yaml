@@ -1,0 +1,7 @@
+interface:
+  display_name: "亚马逊备货参数设置"
+  short_description: "Configure Amazon operations replenishment parameters by station"
+  default_prompt: "Use $amazon-replenishment-ops to configure the operations-side replenishment parameters for the specified station and validate the result."
+
+policy:
+  allow_implicit_invocation: true

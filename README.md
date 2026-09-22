@@ -1,22 +1,56 @@
-# codex-skills（feishu-api 技能）
+# codex-skills（团队 Codex 技能）
 
-飞书开放平台对接技能：查询公司飞书数据（通讯录用户/部门/多维表格/群聊），可发消息。
-配套 `scripts/feishu_client.py` 客户端，仅用 Python 标准库；解密工具 `unlock.py` 使用 `cryptography`（Codex 自带 Python 已包含）。
+本仓库用于团队共享 Codex 技能。
 
-## 安装（同事电脑）
+## 技能列表
 
-在 Codex 中让 `$skill-installer` 从本仓库路径 `skills/feishu-api` 安装；或手动把 `skills\feishu-api` 文件夹复制到 `C:\Users\<你的用户名>\.codex\skills\` 下并重启 Codex。
+### feishu-api
 
-## 首次使用：解锁凭据（需要团队密码）
+飞书开放平台对接技能，支持通讯录、部门、群聊、多维表格和电子表格查询与操作。
 
-仓库**不包含明文密钥**。`skills/feishu-api/config.json.enc` 是团队飞书凭据的加密文件（AES-256-GCM + scrypt）。在技能目录执行：
+### amazon-replenishment-ops
 
-    python unlock.py
+亚马逊运营端备货参数设置技能。运营指定站点、目标亚马逊月均货值和目标售出率后，Codex 会自动完成：
 
-按提示输入团队共享密码，成功后会生成本地 `config.json`（已被 `.gitignore` 忽略，不会提交），技能即可直接使用，无需其他配置。
+- 预估并设置 `AI亚马逊月均`
+- 计算站点上限货值范围
+- 设置 `AI下限` 和 `AI销量偏离度`
+- 回读飞书并校验货值和 `是否计算` 规则
 
-团队密码不随仓库分发，请向技能管理员（GitHub: czk-nhgj）通过公司安全渠道索取，不要发在公开群或提交到仓库。
+该技能依赖 `feishu-api`，两个技能需要同时安装。
 
-## 测试连通性
+## 安装
 
-    python scripts/feishu_client.py token
+让 Codex 使用 `$skill-installer`，从本仓库安装所需技能：
+
+```text
+请使用 $skill-installer 安装 GitHub 仓库 czk-nhgj/codex-skills 中的：
+1. skills/feishu-api
+2. skills/amazon-replenishment-ops
+```
+
+也可以手动把 `skills` 下的技能文件夹复制到 `C:\Users\<用户名>\.codex\skills\`，然后重启 Codex。
+
+## 飞书凭据
+
+仓库不包含明文密钥。`skills/feishu-api/config.json.enc` 是加密后的团队飞书凭据。
+
+首次使用 `feishu-api` 或 `amazon-replenishment-ops` 前，在 `skills/feishu-api` 目录执行：
+
+```bash
+python unlock.py
+```
+
+按提示输入团队共享密码，成功后会在本机生成 `config.json`。该文件已被 `.gitignore` 忽略，不会提交。
+
+团队密码请通过公司安全渠道向技能管理员获取。
+
+## 测试
+
+在 `skills/feishu-api` 目录执行：
+
+```bash
+python scripts/feishu_client.py token
+```
+
+看到成功返回的 token 信息后，技能即可使用。
